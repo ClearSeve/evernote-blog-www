@@ -22,20 +22,22 @@ class IndexPage extends Component {
 
   render() {
     let list = this.props.list.map((item, i) => (
-      <Col md={24}>
+      <Col md={24} key={i}>
         <div>
-          <Link href={"/article/" + item.aid}>
+          <Link href={"/article/[aid]"} as={"/article/" + item.aid} >
             <a><Typography.Title level={2}>{item.title}</Typography.Title></a>
           </Link>
+
           <div dangerouslySetInnerHTML={{ __html: item.content }} />
-          <p>
+          <div>
             发布时间：{item.createDate}
             <Divider type="vertical" />
             更新时间：{item.updateDate}
             <Divider type="vertical" />
             分类：{item.classify.name}
-          </p>
+          </div>
           <Divider />
+
         </div>
       </Col>
     ));
