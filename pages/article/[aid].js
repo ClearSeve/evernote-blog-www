@@ -4,6 +4,7 @@ import { Row, Col, Typography, Divider } from 'antd';
 import NormalLayout from '../layouts/normal';
 import fetch from 'isomorphic-unfetch'
 import Head from '../layouts/head';
+import "../myconfig"
 
 const { Paragraph, Title } = Typography;
 
@@ -14,7 +15,7 @@ class ArticlePage extends Component {
     var param = {
       aid: query.aid
     }
-    const res = await fetch('http://47.104.169.179:6800/api/v1/article/get', { method: 'POST', body: JSON.stringify(param), })
+    const res = await fetch(myconfig.api.url + myconfig.api.articleContent, { method: 'POST', body: JSON.stringify(param), })
     const json = await res.json()
     return { info: json }
   }

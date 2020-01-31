@@ -1,14 +1,14 @@
 import { Component } from "react";
-import { Form, Select, Row, Col, Typography, Divider } from 'antd'
+import { Col, Typography, Divider } from 'antd'
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
-import NormalLayout from './layouts/normal';
-import Head from './layouts/head';
-
+import NormalLayout from './layouts/normal'
+import Head from './layouts/head'
+import "./myconfig"
 
 class IndexPage extends Component {
   static async getInitialProps() {
-    const res = await fetch('http://47.104.169.179:6800/api/v1/article/list', { method: 'POST' })
+    const res = await fetch(myconfig.api.url + myconfig.api.articleList, { method: 'POST' })
     const json = await res.json()
     return { list: json.list }
   }
@@ -46,7 +46,7 @@ class IndexPage extends Component {
 
     return (
       <div>
-        <Head/>
+        <Head />
         <NormalLayout >
           {list}
         </NormalLayout>
