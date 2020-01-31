@@ -3,6 +3,8 @@ import { Form, Select, Row, Col, Typography, Divider } from 'antd'
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
 import NormalLayout from './layouts/normal';
+import Head from './layouts/head';
+
 
 class IndexPage extends Component {
   static async getInitialProps() {
@@ -44,6 +46,7 @@ class IndexPage extends Component {
 
     return (
       <div>
+        <Head/>
         <NormalLayout >
           {list}
         </NormalLayout>
